@@ -1,4 +1,4 @@
-name: Monad Invariant Lifecycle
+name: Monad Multi-Tentacle Lifecycle
 
 on:
   push:
@@ -22,15 +22,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Vận hành Hạt Nhân Monad
+      # VẬN HÀNH BẦY NƠ-RON ĐA XÚC TU VÀ 1+N SIÊU XOR
+      - name: Kích hoạt Hạt Nhân Monad (Đa Giác Quan)
         env:
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_PARENT: ${{ github.event.repository.parent.owner.login }}
         run: python engine.py
 
-      - name: Lưu vết tích phân tán (Fast-Forward Chống Conflict)
+      # LƯU VẾT TÍCH BẰNG CHIẾN THUẬT FAST-FORWARD CHỐNG XUNG ĐỘT
+      - name: Lưu vết tích tiến hóa phân tán
         run: |
-          git config --global user.name "Monad-Bot"
+          git config --global user.name "Monad-Swarm-Bot"
           git config --global user.email "bot@monad.node"
           
           git fetch origin main
@@ -38,7 +40,7 @@ jobs:
           git add synapses/ synapse_backward.json 2>/dev/null || true
           
           if ! git diff --staged --quiet; then
-            git commit -m "🧬 [Monad] Tiến hóa hạt nhân tự trị [skip ci]"
+            git commit -m "🧬 [Monad Đa Xúc Tu] Hợp nhất giác quan & Siêu XOR [skip ci]"
             git push origin main
           else
             echo "Không có biến đổi mới."
