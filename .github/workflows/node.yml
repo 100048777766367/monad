@@ -1,0 +1,45 @@
+name: Monad Invariant Lifecycle
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  run-monad:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kéo mã nguồn Monad
+        uses: actions/checkout@v4
+
+      - name: Thiết lập Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Vận hành Hạt Nhân Monad
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_PARENT: ${{ github.event.repository.parent.owner.login }}
+        run: python engine.py
+
+      - name: Lưu vết tích phân tán (Fast-Forward Chống Conflict)
+        run: |
+          git config --global user.name "Monad-Bot"
+          git config --global user.email "bot@monad.node"
+          
+          git fetch origin main
+          git reset origin/main
+          git add synapses/ synapse_backward.json 2>/dev/null || true
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "🧬 [Monad] Tiến hóa hạt nhân tự trị [skip ci]"
+            git push origin main
+          else
+            echo "Không có biến đổi mới."
+          fi
