@@ -1,9 +1,41 @@
 {
-    "reply_timestamp": 1791954522,
-    "processed_at": 1791976766.7274375,
+    "reply_timestamp": 1791977573,
+    "processed_at": 1791977573.757751,
     "gradients_for_sensory": [
-        -0.0062,
-        0.0071
+        0.0162,
+        -0.0115
     ],
-    "monad_cid": "0ab510f126f73f70a16bb43dcc91c37b54f3d140135fcf2bb27b5f454a6caa55"
+    "active_tentacles": [
+        "retina",
+        "cochlea",
+        "tactile",
+        "olfactory"
+    ],
+    "super_xor_masks": {
+        "retina": [
+            62345.3357,
+            15026.7646,
+            38419.3565,
+            36150.5982
+        ],
+        "cochlea": [
+            24067.2222,
+            8929.8799,
+            25123.176,
+            13248.4776
+        ],
+        "tactile": [
+            49734.3256,
+            33111.5513,
+            39793.9418,
+            17282.7963
+        ],
+        "olfactory": [
+            29592.8282,
+            7371.1707,
+            48438.9669,
+            13406.3316
+        ]
+    },
+    "quantum_cid": "a8bcd93a594ac4caf413448214b10b77cae12047bb76a618c12d77cc48631cd044bc64fa49f70bac66dff6c19095bde7d2df906b3166241b24396a69467df8ea"
 }
